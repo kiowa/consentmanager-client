@@ -16,6 +16,10 @@ export default {
     setUserId: function(userid) {
       console.log('userid set to:', userid);
     }
+  },
+
+  mounted: function() {
+    this.$store.dispatch('loadConsents')
   }
 }
 </script>

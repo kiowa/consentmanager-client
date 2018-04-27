@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-for="consent in consents" :key="consent.id">
-      <input v-model="consent.value" type="checkbox" :name="consent.id" :id="consent.id">
+      <input :checked="consent.value" @change="updateConsent" type="checkbox" :name="consent.id" :id="consent.id">
       <label :for="consent.id">{{ consent.label }}</label>
     </div>
   </div>
@@ -14,11 +14,13 @@ export default {
     consents: {
       get() {
         return this.$store.state.consents
-      },
-
-      set(value) {
-        console.log(value)
       }
+    }
+  },
+  methods: {
+    updateConsent(e) {
+      this.$store.commit('consent',
+        {'id': e.target.name, 'value': e.target.checked})
     }
   }
 }
