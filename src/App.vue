@@ -1,17 +1,21 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ConsentForm/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ConsentForm from './components/ConsentForm.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    ConsentForm
+  },
+  methods: {
+    setUserId: function(userid) {
+      console.log('userid set to:', userid);
+    }
   }
 }
 </script>
