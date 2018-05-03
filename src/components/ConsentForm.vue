@@ -1,5 +1,8 @@
 <template>
-  <div>
+  <div class="consent-form">
+    <h1>Privacy is important</h1>
+    <p>This website protects your privacy by adhering to the European Union General Data Protection Regulation (GDPR). We will not use your data for any purpose that you do not consent to. We request use of anonymized data to improve your experience on our site.
+    </p>
     <div v-for="consent in consents" :key="consent.id">
       <input :checked="consent.value" @change="updateConsent" type="checkbox" :name="consent.id" :id="consent.id">
       <label :for="consent.id">{{ consent.label }}</label>
@@ -28,6 +31,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.consent-form {
+  border: 1px solid black;
+  padding: 20px;
+}
 h3 {
   margin: 40px 0 0;
 }
