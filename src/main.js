@@ -4,7 +4,19 @@ import store from './store'
 
 Vue.config.productionTip = false
 
-new Vue({
-  store,
-  render: h => h(App)
-}).$mount('#app')
+window.Konsent = {
+  init(options) {
+    new Vue({
+      store,
+      render: h => h('app', {
+      }),
+      components: {
+	App
+      },
+    }).$mount('#app')
+  }
+}
+
+window.Konsent.init()
+const event = new Event('KonsentReady')
+window.dispatchEvent(event)

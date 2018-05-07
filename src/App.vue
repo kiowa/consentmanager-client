@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="Konsent">
     <ConsentForm/>
   </div>
 </template>
@@ -8,11 +8,10 @@
 import ConsentForm from './components/ConsentForm.vue'
 
 export default {
-  name: 'app',
+  name: 'Konsent',
+  props: ['apiKey'],
   components: {
     ConsentForm
-  },
-  methods: {
   },
 
   mounted: function() {

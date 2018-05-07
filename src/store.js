@@ -1,7 +1,7 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
-import Api from './api'
 import uuid from './uuid4'
+import Api from './api'
 
 Vue.use(Vuex)
 
@@ -10,23 +10,7 @@ const api = new Api()
 const store = new Vuex.Store({
   state: {
     userid: '',
-    consents: [
-      {
-        'id': 'newsletter',
-        'label': 'Newsletter',
-        'value': false
-      },
-      {
-        'id': 'analytics',
-        'label': 'Analytics',
-        'value': false
-      },
-      {
-        'id': 'goals',
-        'label': 'Conversion tracking',
-        'value': false
-      }
-    ]
+    consents: []
   },
   mutations: {
     userid(state, payload) {
