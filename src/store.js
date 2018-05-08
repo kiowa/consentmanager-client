@@ -57,7 +57,8 @@ const store = new Vuex.Store({
             consents.push({
                 'id': category.name,
                 'label': category.label,
-                'value': value || category.default
+                'value': value || category.default,
+                'description': category.description
             })
         })
       })
