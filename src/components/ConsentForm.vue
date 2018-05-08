@@ -1,10 +1,10 @@
 <template>
   <div>
-    <a 
+    <button 
       class="waves-effect waves-light btn"
       @click="visible = true">
       Privacy consent
-    </a>
+    </button>
     <div 
       v-if="visible"
       class="modal-overlay"
@@ -39,10 +39,10 @@
         </div>
       </div>
       <div class="modal-footer">
-        <a
+        <button
           href="#!"
           class="modal-close waves-effect waves-green btn-flat"
-          @click="visible = false">Ok</a>
+          @click="visible = false">Ok</button>
       </div>
     </div>
   </div>
@@ -62,10 +62,21 @@ export default {
       }
     }
   },
+  beforeMount() {
+    window.addEventListener('keyup', this.onEscapeKeyUp);
+  },
+  beforeDestroy() {
+    window.removeEventListener('keyup', this.onEscapeKeyUp);
+  },
   methods: {
     updateConsent(e) {
       this.$store.commit('consent',
         {'id': e.target.name, 'value': e.target.checked})
+    },
+    onEscapeKeyUp(event) {
+      if (event.which === 27) {
+        this.visible = false;
+      }
     }
   }
 }
