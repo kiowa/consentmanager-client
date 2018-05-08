@@ -7,15 +7,23 @@
       <div
         v-for="consent in consents" 
         :key="consent.id">
-        <label :for="consent.id">
-          <input
-            :id="consent.id"
-            :name="consent.id"
-            :checked="consent.value"
-            type="checkbox"
-            @change="updateConsent">
-          <span>{{ consent.label }}</span>
-        </label>
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">{{ consent.label }}</span>
+            <p>{{ consent.description }}</p>
+          </div>
+          <div class="card-action">
+            <label :for="consent.id">
+              <input
+                :id="consent.id"
+                :name="consent.id"
+                :checked="consent.value"
+                type="checkbox"
+                @change="updateConsent">
+              <span>I accept</span>
+            </label>
+          </div>
+        </div>
       </div>
     </div>
   </div>
