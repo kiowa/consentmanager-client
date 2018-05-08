@@ -9,11 +9,9 @@ import ConsentForm from './components/ConsentForm.vue'
 
 export default {
   name: 'Konsent',
-  props: ['apiKey'],
   components: {
     ConsentForm
   },
-
   mounted: function() {
     this.$store.dispatch('loadConsents')
   }
