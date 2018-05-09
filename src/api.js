@@ -16,6 +16,18 @@ class Api {
   categories() {
     return this.client.get('/category/')
   }
+
+  consents(userid) {
+    return this.client.get('/consent/', {params: {userid: userid}})
+  }
+
+  saveConsent(data) {
+    if (data.id) {
+      return this.client.put('/consent/'+data.id+'/', data);
+    } else {
+      return this.client.post('/consent/', data)
+    }
+  }
 }
 
 export default Api

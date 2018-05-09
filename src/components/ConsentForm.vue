@@ -25,10 +25,10 @@
               <p>{{ consent.description }}</p>
             </div>
             <div class="card-action">
-              <label :for="consent.id">
+              <label :for="consent.category">
                 <input
-                  :id="consent.id"
-                  :name="consent.id"
+                  :id="consent.category"
+                  :name="consent.category"
                   :checked="consent.value"
                   type="checkbox"
                   @change="updateConsent">
@@ -71,7 +71,7 @@ export default {
   methods: {
     updateConsent(e) {
       this.$store.commit('consent',
-        {'id': e.target.name, 'value': e.target.checked})
+        {'category': e.target.name, 'value': e.target.checked})
     },
     onEscapeKeyUp(event) {
       if (event.which === 27) {

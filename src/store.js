@@ -12,6 +12,7 @@ const store = new Vuex.Store({
     userid: '',
     consents: []
   },
+
   mutations: {
     userid(state, payload) {
       state.userid = payload;
@@ -19,50 +20,47 @@ const store = new Vuex.Store({
     },
 
     consent(state, payload) {
-      let o = state.consents.filter(c => c.id === payload.id);
-      if (o.length === 1) {
-        o[0].value = payload.value
-      }
-
-      window.localStorage.setItem('consents', JSON.stringify(state.consents))
+      Object.assign(state.consents[payload.category], payload);
+      window.localStorage.setItem('consents.consent', JSON.stringify(state.consents))
+      payload.userid = state.userid
+      api.saveConsent(state.consents[payload.category])
     },
+
     consents(state, payload) {
       state.consents = payload;
     }
   },
 
   actions: {
-    loadConsents(context) {
+    async loadConsents(context) {
       let userid = window.localStorage.getItem('consents.userid');
       if (!userid) {
         userid = uuid();
       }
       context.commit('userid', userid);
 
-      let local_consents = window.localStorage.getItem('consents')
-      if (local_consents === null) {
-          local_consents = []
+      let consents = window.localStorage.getItem('consents.consent')
+      if (consents === null) {
+          consents = {}
       } else {
-          local_consents = JSON.parse(local_consents)
+          consents = JSON.parse(consents)
       }
-      let consents = []
-      api.categories()
+
+      await api.categories()
       .then(response => {
         response.data.forEach(category => {
-            let lcs = local_consents.filter(c =>  c.id === category.name )
-            let value = null
-            if (lcs.length > 0) {
-                value = lcs[0].value
-            }
-            consents.push({
-                'id': category.name,
-                'label': category.label,
-                'value': value || category.default,
-                'description': category.description
-            })
+          consents[category.name] = consents[category.name] || {};
+          Object.assign(consents[category.name], category);
+       })
+      });
+
+      await api.consents(userid)
+      .then(response => {
+        response.data.forEach(consent => {
+          Object.assign(consents[consent.category], consent)
         })
       })
-        context.commit('consents', consents)
+      context.commit('consents', consents)
     }
   }
 })
