@@ -15,7 +15,9 @@
     <div id="app"></div>
     <!-- built files will be auto injected -->
     <script>
-      window.KonsentOptions = {}
+        window.addEventListener('KonsentReady', function() {
+            window.Konsent.init({});
+        });
     </script>
   </body>
 </html>

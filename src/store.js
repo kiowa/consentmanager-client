@@ -9,21 +9,25 @@ const api = new Api()
 
 const store = new Vuex.Store({
   state: {
-    userid: '',
-    consents: []
+    device: '',
+    consents: {}
   },
 
   mutations: {
-    userid(state, payload) {
-      state.userid = payload;
-      window.localStorage.setItem('consents.userid', payload);
+    device(state, payload) {
+      state.device = payload;
+      window.localStorage.setItem('consents.device', payload);
     },
 
     consent(state, payload) {
       Object.assign(state.consents[payload.category], payload);
-      window.localStorage.setItem('consents.consent', JSON.stringify(state.consents))
-      payload.userid = state.userid
-      api.saveConsent(state.consents[payload.category])
+      let data = state.consents[payload.category];
+      data.device = state.device;
+      api.saveConsent(data)
+      .then(response => {
+        Object.assign(state.consents[payload.category], response.data)
+        window.localStorage.setItem('consents.consent', JSON.stringify(state.consents))
+      });
     },
 
     consents(state, payload) {
@@ -33,11 +37,11 @@ const store = new Vuex.Store({
 
   actions: {
     async loadConsents(context) {
-      let userid = window.localStorage.getItem('consents.userid');
-      if (!userid) {
-        userid = uuid();
+      let device = window.localStorage.getItem('consents.device');
+      if (!device) {
+        device = uuid();
       }
-      context.commit('userid', userid);
+      context.commit('device', device);
 
       let consents = window.localStorage.getItem('consents.consent')
       if (consents === null) {
@@ -51,10 +55,11 @@ const store = new Vuex.Store({
         response.data.forEach(category => {
           consents[category.name] = consents[category.name] || {};
           Object.assign(consents[category.name], category);
+          consents[category.name].category = category.name;
        })
       });
 
-      await api.consents(userid)
+      await api.consents(device)
       .then(response => {
         response.data.forEach(consent => {
           Object.assign(consents[consent.category], consent)
