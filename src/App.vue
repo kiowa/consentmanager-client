@@ -1,16 +1,19 @@
 <template>
   <div id="Konsent">
     <ConsentForm/>
+    <SubjectRequestForm/>
   </div>
 </template>
 
 <script>
 import ConsentForm from './components/ConsentForm.vue'
+import SubjectRequestForm from './components/SubjectRequestForm.vue'
 
 export default {
   name: 'Konsent',
   components: {
-    ConsentForm
+    ConsentForm,
+    SubjectRequestForm
   },
   mounted: function() {
     this.$store.dispatch('loadConsents')

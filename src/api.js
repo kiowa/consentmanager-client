@@ -17,8 +17,8 @@ class Api {
     return this.client.get('/category/')
   }
 
-  consents(userid) {
-    return this.client.get('/consent/', {params: {userid: userid}})
+  consents(device) {
+    return this.client.get('/consent/', {params: {device: device}})
   }
 
   saveConsent(data) {
@@ -27,6 +27,10 @@ class Api {
     } else {
       return this.client.post('/consent/', data)
     }
+  }
+
+  request(data) {
+    return this.client.post('/request/', data)
   }
 }
 

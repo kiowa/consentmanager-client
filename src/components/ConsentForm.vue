@@ -1,23 +1,23 @@
 <template>
   <div>
-    <button 
+    <button
       class="waves-effect waves-light btn"
       @click="visible = true">
-      Privacy consent
+      Privacy settings
     </button>
-    <div 
+    <div
       v-if="visible"
       class="modal-overlay"
       @click="visible = false"/>
-    <div 
-      v-if="visible" 
+    <div
+      v-if="visible"
       class="modal">
       <div class="modal-content">
         <h4>Privacy is important</h4>
-        <p>This website protects your privacy by adhering to the European Union General Data Protection Regulation (GDPR). We will not use your data for any purpose that you do not consent to. We request use of anonymized data to improve your experience on our site.
+        <p>This website protects your privacy by adhering to the European Union General Data Protection Regulation (GDPR). We will not use your data for any purpose that you do not consent to.
         </p>
         <div
-          v-for="consent in consents" 
+          v-for="consent in consents"
           :key="consent.id">
           <div class="card">
             <div class="card-content">
@@ -40,7 +40,6 @@
       </div>
       <div class="modal-footer">
         <button
-          href="#!"
           class="modal-close waves-effect waves-green btn-flat"
           @click="visible = false">Ok</button>
       </div>
@@ -49,7 +48,6 @@
 </template>
 
 <script>
-  
 export default {
   name: 'ConsentForm',
   data: function() {
@@ -96,5 +94,9 @@ export default {
 .modal-overlay {
   display: inherit;
   opacity: 0.5;
+}
+
+.modal .modal-footer {
+  padding: 4px 0px;
 }
 </style>
