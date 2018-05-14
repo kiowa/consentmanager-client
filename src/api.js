@@ -5,11 +5,14 @@ const API_KEY = process.env.VUE_APP_API_KEY
 
 class Api {
   constructor() {
-    let options = window.KonsentOptions || {}
-    const apiKey = options.apiKey || API_KEY
-    this.client = axios.create({
+   this.client = axios.create({
       baseURL: BASE_URL,
-      headers: {'Authorization': 'Token ' + apiKey}
+    })
+    this.client.interceptors.request.use(function(config) {
+      let options = window.KonsentOptions || {}
+      const apiKey = options.apiKey || API_KEY
+      config.headers.Authorization = 'Token ' + apiKey
+      return config
     })
   }
 

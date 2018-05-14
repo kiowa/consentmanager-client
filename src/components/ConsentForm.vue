@@ -48,8 +48,12 @@
 </template>
 
 <script>
+import store from '../store'
+
 export default {
+  store,
   name: 'ConsentForm',
+  props: ['apiKey'],
   data: function() {
     return { visible: false }
   },
@@ -65,6 +69,10 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener('keyup', this.onEscapeKeyUp);
+  },
+  mounted: function() {
+    window.KonsentOptions = {apiKey: this.apiKey}
+    this.$store.dispatch('loadConsents')
   },
   methods: {
     updateConsent(e) {

@@ -107,11 +107,14 @@
 
 <script>
 import Api from '../api'
+import store from '../store'
 
 const api = new Api()
 
 export default {
+  store,
   name: 'SubjectRequestForm',
+  props: ['apiKey'],
   data: function() {
     return {
       visible: false,
@@ -139,6 +142,9 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener('keyup', this.onEscapeKeyUp);
+  },
+  mounted: function() {
+    window.KonsentOptions = {apiKey: this.apiKey}
   },
   methods: {
     send() {
