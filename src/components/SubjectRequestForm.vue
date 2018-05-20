@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="inline">
     <button
       class="waves-effect waves-light btn"
       @click="visible = true">
@@ -17,14 +17,7 @@
           <h4>Request your data</h4>
           <p>Fill out the form to request data we have gathered about you</p>
           <div class="row">
-            <!-- <div class="input field col s12">
-              -   <label>Type of request</label>
-              -   <select class="browser-default">
-              -     <option value="" disabled selected>Choose your option</option>
-              -     <option value="1">Option 1</option>
-              -   </select>
-              - </div> -->
-            <div class="input-field col s12">  
+           <div class="input-field col s12">  
               <div class="select-wrapper">
                 <input
                   :value="request_type.label"
@@ -121,8 +114,8 @@ export default {
       request_type: {label: 'Choose your option', value: ''},
       activeSelect: false,
       requestTypeOptions: [
-        {label: 'Give me all my data', value:'data'},
-        {label: 'Delete all my data', value:'delete'}
+        {label: 'Request for data access', value:'data'},
+        {label: 'Request for data erasure', value:'delete'}
         ],
       invalidRequestType: false,
       validEmail: false,
@@ -185,6 +178,10 @@ export default {
 </style>
 
 <style lang="css" scoped>
+.inline {
+  display: inline;
+}
+
 .modal {
   display: inherit;
   z-index: 1000;

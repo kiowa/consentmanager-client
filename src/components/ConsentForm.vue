@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="inline">
     <button
       class="waves-effect waves-light btn"
       @click="visible = true">
-      Privacy settings
+      View privacy settings
     </button>
     <div
       v-if="visible"
@@ -29,7 +29,7 @@
                 <input
                   :id="consent.category"
                   :name="consent.category"
-                  :checked="consent.value"
+                  :checked="consent.accepted"
                   type="checkbox"
                   @change="updateConsent">
                 <span>I accept</span>
@@ -77,7 +77,7 @@ export default {
   methods: {
     updateConsent(e) {
       this.$store.commit('consent',
-        {'category': e.target.name, 'value': e.target.checked})
+        {'category': e.target.name, 'accepted': e.target.checked})
     },
     onEscapeKeyUp(event) {
       if (event.which === 27) {
@@ -94,6 +94,10 @@ export default {
 </style>
 
 <style lang="css" scoped>
+.inline {
+  display: inline;
+}
+
 .modal {
   display: inherit;
   z-index: 1000;
