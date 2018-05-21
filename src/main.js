@@ -1,6 +1,5 @@
 import 'document-register-element'
 import Vue from 'vue'
-import App from './App.vue'
 import store from './store'
 import VueCustomElement from 'vue-custom-element'
 
@@ -19,19 +18,12 @@ Vue.use(VueCustomElement)
 Vue.customElement('consent-form', ConsentForm, {})
 Vue.customElement('subject-request', SubjectRequestForm, {})
 
-/* window.Konsent = {
- *     init(options) {
- *         window.KonsentOptions = options || {};
- *         new Vue({
- *             store,
- *             components: {
- *                 App
- *             },
- *             render: h => h('app', {
- *             }),
- *         }).$mount('#app')
- *     }
- * }
- * 
- * const event = new Event('KonsentReady')
- * window.dispatchEvent(event) */
+window.Consent = {
+  accepted: (category) => {
+    if (store.state.consents[category]) {
+      return store.state.consents[category].accepted
+    }
+    return false
+  }
+}
+
