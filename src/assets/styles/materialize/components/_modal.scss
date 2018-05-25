@@ -1,10 +1,13 @@
 .modal {
   @extend .z-depth-5;
 
-  display: none;
+  display: block;
   position: fixed;
   left: 0;
   right: 0;
+  top: inherit;
+  bottom: inherit;
+  text-align: left;
   background-color: #fafafa;
   padding: 0;
   max-height: 70%;

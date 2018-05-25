@@ -173,37 +173,41 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="sass" scoped>
-  @import ../assets/styles/materialize/materialize
+<style lang="scss" scoped>
+   subject-request {
+      @import '../assets/styles/materialize/materialize';
+    }
 </style>
 
-<style lang="css" scoped>
-.inline {
-  display: inline;
-}
+<style lang="scss" scoped>
+subject-request {
+  .inline {
+    display: inline;
+  }
 
-.modal {
-  display: inherit;
-  z-index: 1000;
-}
+  .modal {
+    display: inherit;
+    z-index: 1000;
+  }
 
-.modal-overlay {
-  display: inherit;
-  opacity: 0.5;
-}
+  .modal-overlay {
+    display: inherit;
+    opacity: 0.5;
+  }
 
-.modal .modal-footer {
-  padding: 4px 0px;
-}
+  .modal .modal-footer {
+    padding: 4px 0px;
+  }
 
-.select-active {
-  display: block;
-  width: 256.984px;
-  left: 0px;
-  top: 0px;
-  height: 200px;
-  transform-origin: 0px 0px 0px;
-  opacity: 1;
-  transform: scaleX(1) scaleY(1);
+  .select-active {
+    display: block;
+    width: 256.984px;
+    left: 0px;
+    top: 0px;
+    height: 200px;
+    transform-origin: 0px 0px 0px;
+    opacity: 1;
+    transform: scaleX(1) scaleY(1);
+  }
 }
 </style>

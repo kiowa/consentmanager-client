@@ -89,26 +89,31 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="sass" scoped>
-  @import ../assets/styles/materialize/materialize
+<style lang="scss" scoped>
+  consent-form {
+      @import '../assets/styles/materialize/materialize';
+    }
 </style>
 
-<style lang="css" scoped>
-.inline {
-  display: inline;
-}
 
-.modal {
-  display: inherit;
-  z-index: 1000;
-}
+<style lang="scss" scoped>
+consent-form {
+  .inline {
+    display: inline;
+  }
 
-.modal-overlay {
-  display: inherit;
-  opacity: 0.5;
-}
+  .modal {
+    display: inherit;
+    z-index: 1000;
+  }
 
-.modal .modal-footer {
-  padding: 4px 0px;
+  .modal-overlay {
+    display: inherit;
+    opacity: 0.5;
+  }
+
+  .modal .modal-footer {
+    padding: 4px 0px;
+  }
 }
 </style>
