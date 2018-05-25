@@ -1,8 +1,7 @@
 module.exports = {
  chainWebpack: config => {
    if (process.env.NODE_ENV === 'production') {
-    console.log('****************************')
-     console.log(config.plugins.entries())
+     // console.log(config.plugins.entries())
      config.plugins.delete('html')
      config.plugins.delete('split-vendor')
      config.plugins.delete('split-manifest')
@@ -13,8 +12,6 @@ module.exports = {
     })
      config.output.libraryTarget('umd')
      config.output.filename('js/app.js')
-
-    console.log('****************************')
    }
  }
 }
