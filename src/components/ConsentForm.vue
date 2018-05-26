@@ -7,12 +7,12 @@
     </button>
     <div
       v-if="visible"
-      class="modal-overlay"
+      class="consent__modal-overlay"
       @click="visible = false"/>
     <div
       v-if="visible"
-      class="modal">
-      <div class="modal-content">
+      class="consent__modal">
+      <div class="consent__modal-content">
         <h4>Privacy is important</h4>
         <p>This website protects your privacy by adhering to the European Union General Data Protection Regulation (GDPR). We will not use your data for any purpose that you do not consent to.
         </p>
@@ -38,9 +38,9 @@
           </div>
         </div>
       </div>
-      <div class="modal-footer">
+      <div class="consent__modal-footer">
         <button
-          class="modal-close waves-effect waves-green btn-flat"
+          class="consent__modal-close waves-effect waves-green btn-flat"
           @click="visible = false">Ok</button>
       </div>
     </div>
@@ -100,20 +100,6 @@ export default {
 consent-form {
   .inline {
     display: inline;
-  }
-
-  .modal {
-    display: inherit;
-    z-index: 1000;
-  }
-
-  .modal-overlay {
-    display: inherit;
-    opacity: 0.5;
-  }
-
-  .modal .modal-footer {
-    padding: 4px 0px;
   }
 }
 </style>

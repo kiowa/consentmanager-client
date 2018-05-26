@@ -7,13 +7,13 @@
     </button>
     <div
       v-if="visible"
-      class="modal-overlay"
+      class="consent__modal-overlay"
       @click="close()"/>
     <div
       v-if="visible"
-      class="modal">
+      class="consent__modal">
       <form @submit.stop.prevent="send()">
-        <div class="modal-content">
+        <div class="consent__modal-content">
           <h4>Request your data</h4>
           <p>Fill out the form to request data we have gathered about you</p>
           <div class="row">
@@ -87,10 +87,10 @@
             </div>
           </div>
         </div>
-        <div class="modal-footer">
+        <div class="consent__modal-footer">
           <button
             type="submit"
-            class="modal-close waves-effect waves-green btn-flat">
+            class="consent__modal-close waves-effect waves-green btn-flat">
             send</button>
         </div>
       </form>
@@ -184,21 +184,6 @@ subject-request {
   .inline {
     display: inline;
   }
-
-  .modal {
-    display: inherit;
-    z-index: 1000;
-  }
-
-  .modal-overlay {
-    display: inherit;
-    opacity: 0.5;
-  }
-
-  .modal .modal-footer {
-    padding: 4px 0px;
-  }
-
   .select-active {
     display: block;
     width: 256.984px;
@@ -209,5 +194,6 @@ subject-request {
     opacity: 1;
     transform: scaleX(1) scaleY(1);
   }
+
 }
 </style>
