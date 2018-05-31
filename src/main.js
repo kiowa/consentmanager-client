@@ -24,6 +24,10 @@ window.Consent = {
       return store.state.consents[category].accepted
     }
     return false
+  },
+
+  device: () => {
+    return store.state.device
   }
 }
-
+store.dispatch('setupDevice')

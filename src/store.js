@@ -36,13 +36,15 @@ const store = new Vuex.Store({
   },
 
   actions: {
-    async loadConsents(context) {
+    setupDevice(context) {
       let device = window.localStorage.getItem('consents.device');
       if (!device) {
         device = uuid();
       }
       context.commit('device', device);
+    },
 
+    async loadConsents(context) {
       let consents = window.localStorage.getItem('consents.consent')
       if (consents === null) {
           consents = {}
